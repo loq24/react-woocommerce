@@ -1,0 +1,7 @@
+.productItem {
+  @apply flex-1 flex flex-col;
+
+  &:not(:first-child) {
+    @apply ml-4;
+  }
+}

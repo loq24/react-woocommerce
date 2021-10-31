@@ -1,0 +1,6 @@
+.main-heading {
+  @apply text-3xl font-bold text-gray-900 sm:truncate mb-7;
+}
+.clickable-img {
+  @apply object-cover hover:opacity-80 transition-opacity duration-500;
+}
