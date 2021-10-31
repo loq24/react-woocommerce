@@ -42,7 +42,7 @@ const Item: React.FC<ItemProps> = ({ product }) => {
         </button>
         <input
           type="text"
-          className="border border-gray-500 p-1 border-solid bg-transparent ml-2"
+          className="border border-gray-500 p-1 border-solid bg-transparent ml-2 outline-none text-white"
         />
         <button className="border border-gray-500 p-1 border-solid text-white font-light text-lg">
           -
