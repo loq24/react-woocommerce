@@ -1,6 +1,6 @@
 import Link from "next/link";
 import Image from "next/image";
-import { Product } from "interfaces/interfaces";
+import { Product } from "interfaces";
 import styles from "styles/components/ProductList/ProductItem.module.scss";
 import classNames from "classnames";
 
@@ -13,7 +13,7 @@ const ProductItem: React.FC<ProductItemProps> = ({ product }) => {
     <div className={styles.productItem}>
       <Link href={`/product/${product.slug}`}>
         <a className="relative w-full h-full">
-          <div className="w-full h-64 mb-4 overflow-hidden relative">
+          <div className="w-full h-64 md:mb-4 mb-2 overflow-hidden relative">
             <Image
               src={product?.image.sourceUrl}
               quality={100}

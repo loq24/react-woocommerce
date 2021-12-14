@@ -7,3 +7,25 @@
 body {
   @apply bg-white;
 }
+
+html {
+  scroll-behavior: smooth;
+}
+
+::-webkit-scrollbar {
+  width: 10px;
+  height: 10px;
+}
+::-webkit-scrollbar-button:start:decrement,
+::-webkit-scrollbar-button:end:increment {
+  height: 30px;
+  background-color: transparent;
+}
+::-webkit-scrollbar-track-piece {
+  @apply bg-black;
+}
+::-webkit-scrollbar-thumb:vertical {
+  height: 50px;
+  background-color: #666;
+  -webkit-border-radius: 6px;
+}

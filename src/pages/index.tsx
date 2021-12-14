@@ -1,6 +1,6 @@
 import { GetStaticProps } from "next";
 import apolloClient from "lib/apolloClient";
-import { ProductCategory, Product } from "interfaces/interfaces";
+import { ProductCategory, Product } from "interfaces";
 import { GET_PRODUCT_CATEGORIES, GET_ON_SALE_PRODUCTS } from "api/queries";
 import CategoryList from "components/CategoryList/CategoryList";
 import ProductList from "components/ProductList/ProductList";
@@ -11,8 +11,6 @@ interface HomeProps {
 }
 
 const Home: React.FC<HomeProps> = ({ categories, onSaleProducts }) => {
-  console.log("onSaleProducts", onSaleProducts);
-
   return (
     <>
       <h1 className="main-heading text-center">
@@ -33,8 +31,6 @@ export const getStaticProps: GetStaticProps = async () => {
   const { data: onSaleProductsData, error } = await apolloClient.query({
     query: GET_ON_SALE_PRODUCTS
   });
-
-  console.log("error", error);
 
   return {
     props: {

@@ -1,14 +1,41 @@
-import { Product } from "interfaces/interfaces";
+import { useContext } from "react";
+import styles from "styles/components/PageLayout/Cart/Item.module.scss";
+import { CartProduct } from "interfaces";
 import Image from "next/image";
+import CartItemsContext from "contexts/cartItemsContext";
+import Types from "reducers/cart/types";
 
 interface ItemProps {
-  product: Product;
+  product: CartProduct;
 }
 
 const Item: React.FC<ItemProps> = ({ product }) => {
-  const { image, name, price } = product;
+  const { dispatch } = useContext(CartItemsContext);
+  const { slug, image, name, price, totalItems } = product;
+
+  const removeWholeProduct = () => {
+    dispatch({
+      type: Types.removeWholeProduct,
+      payload: slug
+    });
+  };
+
+  const removeSingleItem = () => {
+    dispatch({
+      type: Types.removeSingleItem,
+      payload: slug
+    });
+  };
+
+  const addSingleItem = () => {
+    dispatch({
+      type: Types.addToCart,
+      payload: product
+    });
+  };
+
   return (
-    <div className="mb-7">
+    <div className={styles.item}>
       <div className="flex flex-row mb-3 justify-between">
         <div className="w-4/5 flex flex-row">
           <Image
@@ -16,6 +43,7 @@ const Item: React.FC<ItemProps> = ({ product }) => {
             width={64}
             height={64}
             className="clickable-img"
+            quality={100}
           />
           <span className="text-lg ml-4 text-white">{name}</span>
         </div>
@@ -24,7 +52,10 @@ const Item: React.FC<ItemProps> = ({ product }) => {
         </div>
       </div>
       <div className="flex flex-row">
-        <button className="border border-gray-500 p-1 border-solid">
+        <button
+          onClick={removeWholeProduct}
+          className="border border-gray-500 p-1 border-solid w-9 h-9 flex flex-row justify-center items-center"
+        >
           <svg
             xmlns="http://www.w3.org/2000/svg"
             className="h-4 w-4"
@@ -42,12 +73,20 @@ const Item: React.FC<ItemProps> = ({ product }) => {
         </button>
         <input
           type="text"
-          className="border border-gray-500 p-1 border-solid bg-transparent ml-2 outline-none text-white"
+          className="border border-gray-500 p-1 border-solid bg-transparent ml-2 outline-none text-white flex-1 h-9 pl-3"
+          value={totalItems}
+          disabled
         />
-        <button className="border border-gray-500 p-1 border-solid text-white font-light text-lg">
+        <button
+          className="border border-gray-500 p-1 border-solid w-9 h-9 flex flex-row justify-center items-center text-white font-light text-lg"
+          onClick={removeSingleItem}
+        >
           -
         </button>
-        <button className="border border-gray-500 p-1 border-solid text-white font-light text-lg">
+        <button
+          className="border border-gray-500 p-1 border-solid w-9 h-9 flex flex-row justify-center items-center text-white font-light text-lg"
+          onClick={addSingleItem}
+        >
           +
         </button>
       </div>

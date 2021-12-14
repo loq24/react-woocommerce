@@ -1,0 +1,6 @@
+.item {
+  @apply mb-7 pb-4;
+  &:not(:last-child) {
+    @apply border-b border-gray-500 border-solid;
+  }
+}

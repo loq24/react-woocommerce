@@ -143,3 +143,39 @@ export const GET_ALL_PRODUCTS_SLUGS = gql`
     }
   }
 `;
+
+export const GET_PRODUCTS_BY_SLUGS = gql`
+  query GetProductsBySlugs($slugs: [String!]) {
+    products(where: { slugIn: $slugs, orderby: { field: NAME_IN } }) {
+      nodes {
+        name
+        slug
+        onSale
+        description
+        image {
+          altText
+          sourceUrl
+          mediaDetails {
+            height
+            width
+          }
+        }
+        ... on SimpleProduct {
+          price
+          salePrice
+          regularPrice
+        }
+        ... on VariableProduct {
+          price
+          salePrice
+          regularPrice
+        }
+        ... on ExternalProduct {
+          price
+          salePrice
+          regularPrice
+        }
+      }
+    }
+  }
+`;

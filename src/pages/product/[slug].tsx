@@ -3,8 +3,9 @@ import Image from "next/image";
 import { GetStaticProps, GetStaticPaths } from "next";
 import apolloClient from "lib/apolloClient";
 import { GET_PRODUCT, GET_ALL_PRODUCTS_SLUGS } from "api/queries";
-import { Product as ProductInterface } from "interfaces/interfaces";
-import CartContext from "contexts/cartContext";
+import { Product as ProductInterface } from "interfaces";
+import CartItemsContext from "contexts/cartItemsContext";
+import CartVisibilityContext from "contexts/cartVisibilityContext";
 import Types from "reducers/cart/types";
 import classNames from "classnames";
 
@@ -13,22 +14,22 @@ interface ProductProps {
 }
 
 const Product: React.FC<ProductProps> = ({ product }) => {
-  const { cart, dispatch } = useContext(CartContext);
+  const { dispatch } = useContext(CartItemsContext);
+  const { toggleCartVisibility } = useContext(CartVisibilityContext);
   const { image, name, onSale, regularPrice, salePrice, price, description } =
     product;
-
-  console.log("cart", cart);
 
   const addToCart = () => {
     dispatch({
       type: Types.addToCart,
       payload: { ...product }
     });
+    toggleCartVisibility();
   };
 
   return (
-    <div className="flex flex-row justify-between w-full max-w-2xl mx-auto">
-      <div className="overflow-hidden relative w-2/5 h-80">
+    <div className="flex sm:flex-row flex-col justify-between w-full max-w-2xl mx-auto">
+      <div className="overflow-hidden relative sm:w-2/5 w-full sm:mb-0 mb-5 h-80">
         {image && (
           <Image
             src={image.sourceUrl}
@@ -38,7 +39,7 @@ const Product: React.FC<ProductProps> = ({ product }) => {
           />
         )}
       </div>
-      <div className="w-3/5 pl-6">
+      <div className="sm:w-3/5 w-full sm:pl-6 sm:pr-0 pl-5 pr-5 ">
         <h1 className="text-4xl text-left font-bold text-gray-900 sm:truncate mb-8">
           {name}
         </h1>
@@ -66,7 +67,7 @@ const Product: React.FC<ProductProps> = ({ product }) => {
 
         <button
           onClick={addToCart}
-          className="bg-black px-6 py-3 text-white text-xs uppercase hover:bg-white hover:text-black border-black border transition-colors duration-500"
+          className="bg-black px-6 py-3 text-white text-xs uppercase hover:bg-white hover:text-black border-black border-2 transition-colors duration-500"
         >
           Add To Cart
         </button>
