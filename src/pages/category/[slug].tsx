@@ -4,7 +4,7 @@ import {
   GET_CATEGORY_PRODUCTS,
   GET_PRODUCT_CATEGORIES_SLUGS
 } from "api/queries";
-import { Product } from "interfaces/interfaces";
+import { Product } from "interfaces";
 import ProductList from "components/ProductList/ProductList";
 
 interface CategoryProps {
@@ -13,8 +13,6 @@ interface CategoryProps {
 }
 
 const Category: React.FC<CategoryProps> = ({ products, slug }) => {
-  console.log("products", products);
-
   return (
     <div>
       <h1 className="main-heading capitalize">{slug}</h1>

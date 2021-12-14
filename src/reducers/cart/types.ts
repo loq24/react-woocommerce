@@ -1,6 +1,8 @@
 enum Types {
+  bulkAdd = "BULKADD",
   addToCart = "ADDTOCART",
-  removeFromCart = "REMOVEFROMCART"
+  removeSingleItem = "REMOVESINGLEITEM",
+  removeWholeProduct = "REMOVEWHOLEPRODUCT"
 }
 
 export default Types;

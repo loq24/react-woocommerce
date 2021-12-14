@@ -1,8 +1,8 @@
-import { Product } from "interfaces/interfaces";
+import { CartProduct } from "interfaces";
 import Item from "./Item";
 
 interface ItemListProps {
-  products: Product[];
+  products: CartProduct[];
 }
 
 const ItemList: React.FC<ItemListProps> = ({ products }) => {

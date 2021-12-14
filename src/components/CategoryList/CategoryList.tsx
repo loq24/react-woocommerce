@@ -1,4 +1,4 @@
-import { ProductCategory } from "interfaces/interfaces";
+import { ProductCategory } from "interfaces";
 import CategoryItem from "./CategoryItem";
 
 interface CategoryListProps {

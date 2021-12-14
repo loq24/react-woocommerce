@@ -19,3 +19,11 @@ export interface Product extends CommonFields {
   regularPrice: string;
   salePrice: string;
 }
+export interface CartProduct extends Product {
+  totalItems?: number;
+}
+
+export interface CookieCart {
+  slug: string;
+  totalItems?: number;
+}

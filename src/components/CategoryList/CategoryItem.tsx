@@ -1,6 +1,6 @@
 import Link from "next/link";
 import Image from "next/image";
-import { ProductCategory } from "interfaces/interfaces";
+import { ProductCategory } from "interfaces";
 import styles from "styles/components/CategoryList/CategoryItem.module.scss";
 
 interface CategoryItemProps {
