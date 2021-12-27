@@ -16,8 +16,6 @@ interface ProductProps {
 const Product: React.FC<ProductProps> = ({ product }) => {
   const { dispatch } = useContext(CartItemsContext);
   const { toggleCartVisibility } = useContext(CartVisibilityContext);
-  const { image, name, onSale, regularPrice, salePrice, price, description } =
-    product;
 
   const addToCart = () => {
     dispatch({
@@ -30,9 +28,9 @@ const Product: React.FC<ProductProps> = ({ product }) => {
   return (
     <div className="flex sm:flex-row flex-col justify-between w-full max-w-2xl mx-auto">
       <div className="overflow-hidden relative sm:w-2/5 w-full sm:mb-0 mb-5 h-80">
-        {image && (
+        {product?.image && (
           <Image
-            src={image.sourceUrl}
+            src={product?.image?.sourceUrl}
             layout="fill"
             quality={100}
             className="object-cover"
@@ -41,27 +39,29 @@ const Product: React.FC<ProductProps> = ({ product }) => {
       </div>
       <div className="sm:w-3/5 w-full sm:pl-6 sm:pr-0 pl-5 pr-5 ">
         <h1 className="text-4xl text-left font-bold text-gray-900 sm:truncate mb-8">
-          {name}
+          {product?.name}
         </h1>
         <h2 className="mb-6">
           <span className="text-xl text-gray-900 mr-2">Price: </span>
           <span
             className={classNames("text-2xl mb-1", {
-              "line-through text-gray-400 mr-3": onSale,
-              "text-gray-900": !onSale
+              "line-through text-gray-400 mr-3": product?.onSale,
+              "text-gray-900": !product?.onSale
             })}
           >
-            {regularPrice ?? price}
+            {product?.regularPrice ?? product?.price}
           </span>
-          {onSale && (
-            <span className="text-red-600 text-2xl ">NOW {salePrice}</span>
+          {product?.onSale && (
+            <span className="text-red-600 text-2xl ">
+              NOW {product?.salePrice}
+            </span>
           )}
         </h2>
         <h3 className="text-xl text-gray-900 mr-2">Description:</h3>
-        {description && (
+        {product?.description && (
           <div
             className="text-gray-600 text-sm mb-5"
-            dangerouslySetInnerHTML={{ __html: description }}
+            dangerouslySetInnerHTML={{ __html: product?.description }}
           />
         )}
 
