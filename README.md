@@ -6,6 +6,8 @@ This project is the version 2 of my original [React eCommerce template](https://
 
 The design system is powered by Tailwind CSS.
 
+You can check the demo [here](https://react-woocommerce.vercel.app/)!
+
 ## Basic Setup
 
 You should have a basic knowledge of NextJS framework and Wordpress in order to set up this project.
