@@ -4,6 +4,7 @@ import { ProductCategory, Product } from "interfaces";
 import { GET_PRODUCT_CATEGORIES, GET_ON_SALE_PRODUCTS } from "api/queries";
 import CategoryList from "components/CategoryList/CategoryList";
 import ProductList from "components/ProductList/ProductList";
+import MetaHead from "components/MetaHead";
 
 interface HomeProps {
   categories: ProductCategory[];
@@ -13,6 +14,10 @@ interface HomeProps {
 const Home: React.FC<HomeProps> = ({ categories, onSaleProducts }) => {
   return (
     <>
+      <MetaHead
+        title="React WooCommerce"
+        description="An eCommerce template using TailWindCSS and NextJS' Incremental Static Regeneration. Also, powered by WooGraphQL and WP Headless CMS in the backend."
+      />
       <h1 className="main-heading text-center">
         Here to make your life easier.
       </h1>
