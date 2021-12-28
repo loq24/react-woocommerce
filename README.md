@@ -26,8 +26,8 @@ You should have a basic knowledge of NextJS framework and Wordpress in order to 
 ```bash
 git clone https://github.com/loq24/react-woocommerce
 cd react-woocommerce
-yarn install
-yarn dev
+yarn install or npm install
+yarn dev or npm run dev
 ```
 
 Make sure that you update the **.env** file with your own WP url backend. Then open http://localhost:3000/
