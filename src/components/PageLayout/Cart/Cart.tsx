@@ -1,4 +1,4 @@
-import React, { useContext, useEffect } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import CartItemsContext from "contexts/cartItemsContext";
 import CartVisibilityContext from "contexts/cartVisibilityContext";
 import ItemList from "./ItemList";
@@ -6,6 +6,7 @@ import classNames from "classnames";
 import { CartProduct } from "interfaces";
 
 const Cart = () => {
+  const [checkout, setCheckout] = useState(false);
   const { cart } = useContext(CartItemsContext);
   const { cartVisibility, toggleCartVisibility } = useContext(
     CartVisibilityContext
@@ -18,6 +19,10 @@ const Cart = () => {
         : parseFloat(item.price.slice(1)));
     }, 0)
     .toFixed(2);
+
+  const changeCheckoutText = () => {
+    setCheckout(!checkout);
+  };
 
   useEffect(() => {
     if (cartVisibility) {
@@ -71,8 +76,11 @@ const Cart = () => {
                   ${subTotal}
                 </span>
               </div>
-              <button className="bg-white border-0 py-4 w-full text-sm uppercase hover:bg-gray-300 transition duration-500 ease-in-out">
-                Proceed To Checkout
+              <button
+                className=" outline-none bg-white border-0 py-4 w-full text-sm uppercase hover:bg-gray-300 transition duration-500 ease-in-out"
+                onClick={changeCheckoutText}
+              >
+                {checkout ? `Available soon!` : `Proceed To Checkout`}
               </button>
             </div>
           </div>
