@@ -28,7 +28,7 @@ const Header = () => {
                 </Link>
               </li>
               <li>
-                <a href="https://github.com/loq24/react-ecommerce">Github</a>
+                <a href="https://github.com/loq24/react-woocommerce">Github</a>
               </li>
               <li>
                 <a href="https://lougiequisel.com/">About the author</a>
