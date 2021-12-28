@@ -16,14 +16,16 @@ interface CategoryProps {
 const Category: React.FC<CategoryProps> = ({ products, slug }) => {
   return (
     <>
-      <MetaHead
-        title={`React WooCommerce | ${slug.replace(/\b\w/g, (l) =>
-          l.toUpperCase()
-        )}`}
-        description={`React WooCommerce ${slug.replace(/\b\w/g, (l) =>
-          l.toUpperCase()
-        )}`}
-      />
+      {slug && (
+        <MetaHead
+          title={`React WooCommerce | ${slug.replace(/\b\w/g, (l) =>
+            l.toUpperCase()
+          )}`}
+          description={`React WooCommerce ${slug.replace(/\b\w/g, (l) =>
+            l.toUpperCase()
+          )}`}
+        />
+      )}
       <div>
         <h1 className="main-heading capitalize">{slug}</h1>
         {products && <ProductList products={products} />}
