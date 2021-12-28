@@ -28,9 +28,9 @@ const Product: React.FC<ProductProps> = ({ product }) => {
 
   return (
     <>
-      {product.name && (
+      {product?.name && (
         <MetaHead
-          title={`React WooCommerce | ${product.name}`}
+          title={`React WooCommerce | ${product?.name}`}
           description={
             product.description
               ? product.description.replace(/<\/?[^>]+(>|$)/g, "")
