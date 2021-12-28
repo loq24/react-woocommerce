@@ -28,14 +28,16 @@ const Product: React.FC<ProductProps> = ({ product }) => {
 
   return (
     <>
-      <MetaHead
-        title={`React WooCommerce | ${product.name}`}
-        description={
-          product.description
-            ? product.description.replace(/<\/?[^>]+(>|$)/g, "")
-            : "React WooCommerce"
-        }
-      />
+      {product.name && (
+        <MetaHead
+          title={`React WooCommerce | ${product.name}`}
+          description={
+            product.description
+              ? product.description.replace(/<\/?[^>]+(>|$)/g, "")
+              : "React WooCommerce"
+          }
+        />
+      )}
       <div className="flex sm:flex-row flex-col justify-between w-full max-w-2xl mx-auto">
         <div className="overflow-hidden relative sm:w-2/5 w-full sm:mb-0 mb-5 h-80">
           {product?.image && (
