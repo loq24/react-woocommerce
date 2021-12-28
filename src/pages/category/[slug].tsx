@@ -6,6 +6,7 @@ import {
 } from "api/queries";
 import { Product } from "interfaces";
 import ProductList from "components/ProductList/ProductList";
+import MetaHead from "components/MetaHead";
 
 interface CategoryProps {
   products: Product[];
@@ -14,10 +15,20 @@ interface CategoryProps {
 
 const Category: React.FC<CategoryProps> = ({ products, slug }) => {
   return (
-    <div>
-      <h1 className="main-heading capitalize">{slug}</h1>
-      {products && <ProductList products={products} />}
-    </div>
+    <>
+      <MetaHead
+        title={`React WooCommerce | ${slug.replace(/\b\w/g, (l) =>
+          l.toUpperCase()
+        )}`}
+        description={`React WooCommerce ${slug.replace(/\b\w/g, (l) =>
+          l.toUpperCase()
+        )}`}
+      />
+      <div>
+        <h1 className="main-heading capitalize">{slug}</h1>
+        {products && <ProductList products={products} />}
+      </div>
+    </>
   );
 };
 
